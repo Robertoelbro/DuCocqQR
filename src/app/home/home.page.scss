@@ -1,0 +1,47 @@
+ion-content.background-image {
+  background-image: url('/assets/pokemart.jpg'); /* Reemplaza con la ruta de tu imagen */
+  background-size: cover; /* Asegura que la imagen cubra todo el área del contenedor */
+  background-position: center; /* Centra la imagen en el contenedor */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  height: 100%; /* Asegura que el contenido cubra el área completa del contenedor */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajusta según sea necesario */
+}
+
+img.rotate {
+  width: 150px; /* Ajusta el tamaño según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #d40000;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}

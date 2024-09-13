@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background-image" [fullscreen]="true">
+ <audio #backgroundMusic src="assets/pokemart.mp3" loop></audio>
+  <ion-button (click)="playBackgroundMusic()">Reproducir Música</ion-button>
+  <ion-button (click)="pauseBackgroundMusic()">Pausar Música</ion-button>
+  <ion-button (click)="stopBackgroundMusic()">Detener Música</ion-button> 
+  <div>Tu nombre es {{rnombre}}
+  </div>
+  <div class="image-container">
+    <img src="assets/images.jpg" alt="Rotating Image" class="rotate">
+  </div>
+</ion-content>
