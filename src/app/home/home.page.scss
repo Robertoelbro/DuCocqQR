@@ -1,9 +1,27 @@
+
 ion-content.background-image {
   background-image: url('/assets/pokemart.jpg'); /* Reemplaza con la ruta de tu imagen */
-  background-size: cover; /* Asegura que la imagen cubra todo el área del contenedor */
+  background-size:auto; /* Asegura que la imagen cubra todo el área del contenedor */
   background-position: center; /* Centra la imagen en el contenedor */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   height: 100%; /* Asegura que el contenido cubra el área completa del contenedor */
+  position: relative;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.dvd-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px; /* Ajusta el tamaño del logo */
+  transition: transform 0.1s linear; /* Suaviza el movimiento */
+}
+
+img {
+  width: auto;
+  height: auto;
 }
 
 .image-container {
