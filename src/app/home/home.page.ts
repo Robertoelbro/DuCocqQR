@@ -1,28 +1,40 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit, AfterViewInit {
+export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   rnombre: string = '';
-  audio = new Audio('assets/pokemart.mp3');
-  
-  constructor(private route: ActivatedRoute) {}
+  audio = new Audio('assets/pokemart.mp3'); // Ruta de la música de fondo
 
-  ngOnInit() {
+  constructor(private router: Router, private storage: Storage ) {}
+
+  async ngOnInit() {
     // Obtener el parámetro enviado a través de la URL
-    this.rnombre = this.route.snapshot.paramMap.get('rnombre') || '';
+    this.rnombre = await this.storage.get('registeredName') || '';
     console.log('Nombre recibido: ', this.rnombre);
+
+    // Reproduce la música solo cuando se accede a la página Home
     this.playBackgroundMusic();
   }
 
   ngAfterViewInit() {
     this.initDvdScreensaver();
   }
-  
+
+  ngOnDestroy() {
+    // Detiene la música cuando se abandona la página Home
+    this.stopBackgroundMusic();
+  }
+  pauseBackgroundMusic() {
+    this.audio.pause();
+  }
+
   playBackgroundMusic() {
     this.audio.loop = true; // Hace que el audio se reproduzca en bucle
     this.audio.volume = 0.5; // Ajusta el volumen (0.0 a 1.0)
@@ -30,13 +42,10 @@ export class HomePage implements OnInit, AfterViewInit {
       console.error('Error al reproducir el audio:', error);
     });
   }
+
   stopBackgroundMusic() {
     this.audio.pause();
-    this.audio.currentTime = 0; // Reinicia la música al inicio
-  }
-  
-  pauseBackgroundMusic() {
-    this.audio.pause();
+    this.audio.currentTime = 0; // Reinicia la música al inicio para la próxima vez
   }
 
   initDvdScreensaver() {
@@ -65,8 +74,5 @@ export class HomePage implements OnInit, AfterViewInit {
       // Llama a la función de nuevo para continuar el movimiento
       requestAnimationFrame(moveLogo);
     }
-
-    // Inicia la animación
-    moveLogo();
   }
-}
+  }

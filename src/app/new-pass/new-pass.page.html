@@ -7,20 +7,18 @@
 <ion-content class="background" [fullscreen]="true">
   <div class="body">
   <ion-item>
-    <ion-input label="Usuario"  labelPlacement="floating" placeholder="Enter text"></ion-input>
+    <ion-input [(ngModel)]="nombre" label="Usuario"  labelPlacement="floating" placeholder="Enter text"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input label="Nueva Contraseña" type="password"labelPlacement="floating" placeholder="Enter text"></ion-input>
+    <ion-input [(ngModel)]="restcontrasenna" label="Nueva Contraseña" type="password"labelPlacement="floating" placeholder="Enter text"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input label="Confirmar Contraseña" type="password"labelPlacement="floating" placeholder="Enter text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Palabra de seguridad"  labelPlacement="floating" placeholder="Enter text"></ion-input>
+    <ion-input [(ngModel)]="confirmrestcontrasenna" label="Confirmar nueva Contraseña" type="password"labelPlacement="floating" placeholder="Enter text"></ion-input>
   </ion-item>
   </div>
   <div class="items_vertical_ordenado">
-  <ion-button (click)="navlog()" color="medium" >cambiar Contraseña</ion-button>
+  <ion-button (click)="resetPassword()" color="medium" >cambiar Contraseña</ion-button>
   <ion-button (click)="navregister()"color="dark">No tengo cuenta</ion-button>
+  <ion-button (click)="back()"color="dark">volver</ion-button>
   </div>
 </ion-content>

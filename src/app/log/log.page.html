@@ -9,12 +9,12 @@
 <ion-content class="background" [fullscreen]="true">
   <div class="body">
     <div style="margin-bottom: 5%;">
-    <ion-item>
-      <ion-input [(ngModel)]="rnombre" label="Nombre" labelPlacement="floating" placeholder="Enter text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="contraseña" type="password"labelPlacement="floating" placeholder="Enter text"></ion-input>
-    </ion-item> 
+      <ion-item>
+        <ion-input [(ngModel)]="lnombre" label="Nombre" labelPlacement="floating" placeholder="Enter text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="lcontrasenna" label="Contraseña" type="password" labelPlacement="floating" placeholder="Enter text"></ion-input>
+      </ion-item> 
    </div>
   </div>
     <ion-button (click)=" navhome()" color="medium" expand="block">login</ion-button>

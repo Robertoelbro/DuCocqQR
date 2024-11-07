@@ -1,28 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="background" [fullscreen]="true">
   <div class="body">
     <div style="margin-bottom: 5%;">
-    <ion-item>
-      <ion-input [(ngModel)]="rnombre" label="Nombre" labelPlacement="floating" placeholder="Enter text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="contraseña" labelPlacement="floating" placeholder="Enter text"></ion-input>
-    </ion-item> 
-    <ion-item>
-      <ion-input label="confirmar contraseña" labelPlacement="floating" placeholder="Enter text"></ion-input>
-    </ion-item> 
-    <ion-item>
-      <ion-input label="palabra de recuperacion" labelPlacement="floating" placeholder="Enter text"></ion-input>
-    </ion-item>
-   </div>
+      <ion-item>
+        <ion-input [(ngModel)]="rnombre" label="Nombre" labelPlacement="floating" placeholder="Enter text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="rcontrasenna" type="password" label="Contraseña" labelPlacement="floating" placeholder="Enter text"></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-input [(ngModel)]="rpcontrasenna" type="password" label="Confirmar Contraseña" labelPlacement="floating" placeholder="Enter text"></ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-input [(ngModel)]="Gmail" label="Palabra de recuperación" labelPlacement="floating" placeholder="Enter text"></ion-input>
+      </ion-item>
+    </div>
   </div>
-    <ion-button (click)="navhome()" color="medium" expand="block">Registrarme</ion-button>
+
+  <ion-button (click)="validarContrasenna('login')" color="medium" expand="block">Login</ion-button>
+  
   <div class="items_vertical_ordenado">
-    <ion-button (click)="navlog()" color="medium" >login</ion-button>
+    <ion-button (click)="validarContrasenna('home')" color="medium">Home</ion-button>
+    <ion-button (click)="back()" color="medium">volver</ion-button>
   </div>
 </ion-content>
