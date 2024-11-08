@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="background-image" [fullscreen]="true">
+<ion-content>
  <audio #backgroundMusic src="assets/pokemart.mp3" loop></audio>
   <ion-button (click)="playBackgroundMusic()">Reproducir Música</ion-button>
   <ion-button (click)="pauseBackgroundMusic()">Pausar Música</ion-button>
@@ -18,5 +18,9 @@
   </div>
   <div id="dvd-logo" class="dvd-logo">
     <img src="assets/images.jpg" alt="DVD Logo" />
+  </div>
+  <div class="image-container">
+    <ion-button (click)="generateQr()">Generar Código QR</ion-button>
+    <img *ngIf="qrCodeUrl" [src]="qrCodeUrl" alt="QR Code" />
   </div>
 </ion-content>
