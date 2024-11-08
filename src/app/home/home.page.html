@@ -10,9 +10,16 @@
  <audio #backgroundMusic src="assets/pokemart.mp3" loop></audio>
   <ion-button (click)="playBackgroundMusic()">Reproducir Música</ion-button>
   <ion-button (click)="pauseBackgroundMusic()">Pausar Música</ion-button>
-  <ion-button (click)="stopBackgroundMusic()">Detener Música</ion-button> 
+  <ion-button (click)="stopBackgroundMusic()">Detener Música</ion-button>
+  <ion-button (click)="navlog()">VOLVER LOG UWU</ion-button> 
   <div>Tu nombre es {{rnombre}}
   </div>
+  <div><span [ngClass]="'pokesprite pokemon ' + selectedPokemon"></span></div>
+  <ion-item>
+    <ion-label position="floating">Nombre del Pokémon</ion-label>
+    <ion-input [(ngModel)]="pokemonInput" placeholder="Ej: pikachu"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="selectPokemon()">Seleccionar Pokémon</ion-button>
   <div class="image-container">
     <img src="assets/images.jpg" alt="Rotating Image" class="rotate">
   </div>
