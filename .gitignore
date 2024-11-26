@@ -1,7 +1,0 @@
-# Ignorar todo
-*
-
-# Excepciones
-!.gitignore
-!/src/
-!/src/**

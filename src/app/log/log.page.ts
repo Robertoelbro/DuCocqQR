@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
-import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-log',
   templateUrl: './log.page.html',
@@ -17,8 +16,7 @@ export class LogPage implements OnInit {
     private nvt: NavController,
     private router: Router,
     private alertController: AlertController,
-    private storage: Storage ,
-    private authService: AuthService
+    private storage: Storage 
   ) {}
   async ngOnInit() {
     // obligar al log a esperar una respuesta del register
@@ -28,7 +26,6 @@ export class LogPage implements OnInit {
   async navhome() {
     const registeredName = await this.storage.get('registeredName');
     const registeredPassword = await this.storage.get('registeredPassword');
-    this.authService.setCredentials(this.lnombre, this.lcontrasenna);
 
     if (!this.lnombre || !this.lcontrasenna) {
       const alert = await this.alertController.create({
@@ -55,13 +52,6 @@ export class LogPage implements OnInit {
 
   navsenna() {
     this.nvt.navigateForward(['/new-pass']);
-  }
-   onLogin() {
-    // Guarda las credenciales en el servicio
-    this.authService.setCredentials(this.lnombre, this.lcontrasenna);
-
-    // Ahora puedes continuar con la lógica del login
-    console.log('Credenciales guardadas');
   }
 
 }

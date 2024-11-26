@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { IngresadoGuard } from './guards/ingresado.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-    canActivate: [IngresadoGuard]
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
@@ -15,21 +13,15 @@ const routes: Routes = [
   },
   {
     path: 'log',
-    loadChildren: () => import('./log/log.module').then( m => m.LogPageModule),
+    loadChildren: () => import('./log/log.module').then( m => m.LogPageModule)
   },
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-
   },
   {
     path: 'new-pass',
     loadChildren: () => import('./new-pass/new-pass.module').then( m => m.NewPassPageModule)
-  },
-  {
-    path: 'notfound',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-    
   },
 ];
 
