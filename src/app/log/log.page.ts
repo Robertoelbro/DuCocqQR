@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+
 @Component({
   selector: 'app-log',
   templateUrl: './log.page.html',
@@ -10,22 +11,26 @@ import { Storage } from '@ionic/storage-angular';
 export class LogPage implements OnInit {
   lnombre: string = '';
   lcontrasenna: string = '';
-  
 
   constructor(
     private nvt: NavController,
     private router: Router,
     private alertController: AlertController,
-    private storage: Storage 
+    private storage: Storage
   ) {}
+
   async ngOnInit() {
-    // obligar al log a esperar una respuesta del register
+    // Inicializar el almacenamiento
     await this.storage.create();
   }
-  // Validación de credenciales
+
+  // Validación de credenciales y redirección según el tipo de usuario
   async navhome() {
-    const registeredName = await this.storage.get('registeredName');
-    const registeredPassword = await this.storage.get('registeredPassword');
+    const usuarios = (await this.storage.get('usuarios')) || [];
+    const usuario = usuarios.find(
+      (user: any) =>
+        user.nombre === this.lnombre && user.contrasenna === this.lcontrasenna
+    );
 
     if (!this.lnombre || !this.lcontrasenna) {
       const alert = await this.alertController.create({
@@ -34,7 +39,7 @@ export class LogPage implements OnInit {
         buttons: ['OK'],
       });
       await alert.present();
-    } else if (this.lnombre !== registeredName || this.lcontrasenna !== registeredPassword) {
+    } else if (!usuario) {
       const alert = await this.alertController.create({
         header: 'Error',
         message: 'Nombre o contraseña incorrectos.',
@@ -42,7 +47,12 @@ export class LogPage implements OnInit {
       });
       await alert.present();
     } else {
-      this.router.navigate(['/home', { lnombre: this.lnombre }]);
+      // Redirigir según el tipo de usuario
+      if (usuario.tipoUsuario === 'profesor') {
+        this.router.navigate(['/profesor']);
+      } else if (usuario.tipoUsuario === 'alumno') {
+        this.router.navigate(['/home']);
+      }
     }
   }
 
@@ -53,5 +63,4 @@ export class LogPage implements OnInit {
   navsenna() {
     this.nvt.navigateForward(['/new-pass']);
   }
-
 }

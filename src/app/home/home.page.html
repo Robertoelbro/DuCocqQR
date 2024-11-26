@@ -10,17 +10,35 @@
  <audio #backgroundMusic src="assets/pokemart.mp3" loop></audio>
   <ion-button (click)="playBackgroundMusic()">Reproducir Música</ion-button>
   <ion-button (click)="pauseBackgroundMusic()">Pausar Música</ion-button>
-  <ion-button (click)="stopBackgroundMusic()">Detener Música</ion-button> 
+  <ion-button (click)="stopBackgroundMusic()">Detener Música</ion-button>
+  <ion-button (click)="navlog()">VOLVER LOG UWU</ion-button> 
   <div>Tu nombre es {{rnombre}}
   </div>
+  <div><span [ngClass]="'pokesprite pokemon ' + selectedPokemon"></span></div>
+  <ion-item>
+    <ion-label position="floating">Nombre del Pokémon</ion-label>
+    <ion-input [(ngModel)]="pokemonInput" placeholder="Ej: pikachu"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="selectPokemon()">Seleccionar Pokémon</ion-button>
   <div class="image-container">
     <img src="assets/images.jpg" alt="Rotating Image" class="rotate">
   </div>
   <div id="dvd-logo" class="dvd-logo">
     <img src="assets/images.jpg" alt="DVD Logo" />
   </div>
-  <div class="image-container">
-    <ion-button (click)="generateQr()">Generar Código QR</ion-button>
-    <img *ngIf="qrCodeUrl" [src]="qrCodeUrl" alt="QR Code" />
+  <div class="center">
+    <ion-button (click)="scanQr()">Escanear QR</ion-button>
+    <ion-button expand="block" color="warning" (click)="clearAsistencias()">Limpiar Asistencias</ion-button>
+
+    <h2>Lista de Asistencias</h2>
+    <ul>
+      <li *ngFor="let asistencia of asistencias">{{ asistencia }}</li>
+    </ul>
+
+    <div>
+      <ion-input [(ngModel)]="pokemonInput" placeholder="Escribe un Pokémon"></ion-input>
+      <ion-button expand="block" (click)="selectPokemon()">Seleccionar Pokémon</ion-button>
+      <div class="pokesprite {{ selectedPokemon }}"></div>
+    </div>
   </div>
 </ion-content>
