@@ -4,22 +4,19 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { QrCodeService } from '../services/qrcode.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import {  NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss', './assets/pokemon/pokesprite-misc.css','/assets/pokemon/pokesprite-inventory.css', "./assets/pokemon/pokesprite-pokemon-gen8.css"],
+  styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   rnombre: string = '';
   audio = new Audio('assets/pokemart.mp3'); // Ruta de la música de fondo
   qrCodeUrl: SafeUrl | undefined;
   idAlumno: string = this.rnombre;
-  selectedPokemon: string = 'bulbasaur'; // Pokémon predeterminado
-  pokemonInput: string = '';
 
-  constructor(private nvt: NavController, private router: Router, private storage: Storage, private qrCodeService: QrCodeService, private sanitizer: DomSanitizer) {}
+  constructor(private router: Router, private storage: Storage, private qrCodeService: QrCodeService, private sanitizer: DomSanitizer) {}
 
   async ngOnInit() {
     // Obtener el parámetro enviado a través de la URL
@@ -28,10 +25,6 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
     // Reproduce la música solo cuando se accede a la página Home
     this.playBackgroundMusic();
-  }
-
-  navlog() {
-    this.nvt.navigateForward(['/log']);
   }
 
   ngAfterViewInit() {
@@ -113,11 +106,4 @@ generateQr() {
     }
   );
 }
-
-selectPokemon() {
-  // Actualizar el Pokémon solo si el nombre es válido
-  if (this.pokemonInput) {
-    this.selectedPokemon = this.pokemonInput.toLowerCase(); // Convierte a minúsculas para evitar errores de coincidencia
-    }
-  }
 }
